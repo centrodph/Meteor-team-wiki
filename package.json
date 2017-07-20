@@ -2,7 +2,7 @@
   "name": "meteor-wiki",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run --port 5050"
   },
   "dependencies": {
     "babel-runtime": "^6.20.0",
