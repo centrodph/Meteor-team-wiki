@@ -1,4 +1,4 @@
 import { Mongo } from 'meteor/mongo';
 
 
-export const MiniChat = new Mongo.Collection('minichat');
+export const MiniChatCollection = new Mongo.Collection('minichatcollection');

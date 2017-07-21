@@ -10,5 +10,29 @@ body{
 }
 .header-app-name,
 .header-app-profile{
-  flex-grow: 1;  
+  flex-grow: 1;
+}
+
+
+.footer{
+  padding: 10px;
+  background: #ccc;
+  text-align: center;
+}
+.layout{
+  display: flex;
+}
+.sidebar,.content,.chat{
+  padding:10px;
+}
+.sidebar{
+  flex: 1;
+  background: rgba(255, 0, 0, 0.2);
+}
+.content{
+  flex: 3;
+}
+.chat{
+  flex: 1;
+  background: rgba(0, 255, 0, 0.2);
 }

@@ -2,6 +2,10 @@
 
 # Notes
 
+## Install dependencies
+
+npm install
+
 ## Remove insecure packages
 
 meteor remove insecure

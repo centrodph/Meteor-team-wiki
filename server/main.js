@@ -1,9 +1,9 @@
 import { Meteor } from 'meteor/meteor';
-import { MiniChat } from '../imports/collections/minichat';
+import { MiniChatCollection } from '../imports/collections/minichat';
 
 Meteor.startup(() => {
   //Minichat Publication
-  Meteor.publish('minichat',function(){
-    return MiniChat.find({});
+  Meteor.publish('minichatcollection',function(){
+    return MiniChatCollection.find({});
   });
 });
