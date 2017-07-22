@@ -2,6 +2,10 @@
 
 # Notes
 
+## config external mongo db
+
+export MONGO_URL=mongodb://localhost:27017/your_db
+
 ## Install dependencies
 
 npm install
