@@ -4,7 +4,7 @@
 
 ## config external mongo db
 
-export MONGO_URL=mongodb://localhost:27017/your_db
+export MONGO_URL=mongodb://SERVERNAME:PORT/YOUR_DB_APP
 
 ## Install dependencies
 
@@ -31,3 +31,10 @@ meteor remove autopublish
 export HTTP_PROXY=http://xxx.xxx:port
 
 export HTTPS_PROXY=http://xxx.xxx:port
+
+## Use collections inside React
+
+meteor npm install --save react-addons-pure-render-mixin
+meteor add react-meteor-data
+
+You can read the full documentation on : https://www.meteor.com/tutorials/react/collections
