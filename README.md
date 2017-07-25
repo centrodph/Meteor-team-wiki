@@ -36,5 +36,17 @@ export HTTPS_PROXY=http://xxx.xxx:port
 
 meteor npm install --save react-addons-pure-render-mixin
 meteor add react-meteor-data
+meteor npm install --save react-router react-router-dom
+meteor npm install --save bcrypt
 
 You can read the full documentation on : https://www.meteor.com/tutorials/react/collections
+
+## Add users accounts
+
+meteor add accounts-ui accounts-password
+Example: https://www.meteor.com/tutorials/react/adding-user-accounts
+
+
+## Custom user management
+
+http://www.mrscottmcallister.com/custom-authentication-in-meteor/
