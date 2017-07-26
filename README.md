@@ -1,6 +1,13 @@
 # Meteor-team-wiki
 
 # Notes
+http://es.discovermeteor.com/
+
+## Install Meteor
+$ curl https://install.meteor.com/ | sh
+
+### Testing on c9
+meteor --port $IP:$PORT
 
 ## config external mongo db
 
