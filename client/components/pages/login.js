@@ -1,9 +1,7 @@
 import React , { Component } from 'react';
-import { Template } from 'meteor/templating';
-import { Blaze } from 'meteor/blaze';
-// import { createContainer } from 'meteor/react-meteor-data';
+import UserStatus from '../business/userstatus';
 
-class LoginForm extends Component {
+class LoginForm extends UserStatus {
 
   constructor(props){
       super(props);
@@ -13,29 +11,28 @@ class LoginForm extends Component {
   }
 
   componentDidMount(){
-    console.log("component mounted");
+    console.log("component mounted LoginForm");
     //this.view = Blaze.render(,this.refs.login);
   }
 
   componentWillUnmount(){
-    console.log("component will unmount");
+    console.log("component will unmount LoginForm");
   }
 
   submitHandler(event){
     event.preventDefault();
     const {email, password } = this.refs;
-    console.log(email.value,password.value);
     Meteor.loginWithPassword(email.value, password.value, (err) => {
-          if(err){
+      if(err){
             this.setState({
               error: err.reason
             });
-          } else {
-            this.props.history.push('/');
-          }
+            return;
+      }
+      email.value =null;
+      password.value =null;
+      this.props.history.push('/dashboard');
     });
-    email.value =null;
-    password.value =null;
   }
 
   render(){
@@ -44,11 +41,11 @@ class LoginForm extends Component {
         Login content
         {this.state.error}
         <form onSubmit={this.submitHandler.bind(this)}>
-          <div className="form-input login-input-username">
+          <div className="form-input login-input-email">
             <label>Email</label>
             <input type="email" ref="email" placeholder="email" />
           </div>
-          <div className="form-input login-input-username">
+          <div className="form-input login-input-password">
             <label>Password</label>
             <input type="password" ref="password" placeholder="password" />
           </div>

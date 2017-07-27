@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import UserStatus from '../business/userstatus';
 
-
-class Header extends Component {
+class Header extends UserStatus  {
   constructor(props) {
     super(props);
   }
@@ -10,7 +10,7 @@ class Header extends Component {
     return (
       <div className="header-contener">
         <div className="header-app-name">Meteor Wiki</div>
-        <div className="header-app-profile">Profile</div>
+        <div className="header-app-profile">{this.getUserName()}</div>
       </div>
     );
   }

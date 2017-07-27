@@ -1,12 +1,13 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
+import Redirect from '../parts/redirect';
 import Header from '../parts/header';
 import MiniChat from '../parts/minichat';
 
 class Dashboard extends Component{
   render (){
     return (
-      <div>
+      <div>        
         <Header />
         <div className="layout">
           <div className="sidebar">
