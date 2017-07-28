@@ -15,7 +15,7 @@ class MiniChat extends Component{
     return(
       <div className="chat">
         <h5>chat</h5>
-        {this.props.msgs.map(msg=><div key={msg._id}>{msg.content}</div>)}
+        {this.props.msgs.map(msg=><div key={msg._id}>{msg.user} - {msg.content}</div>)}
         <form onSubmit={this.submitHandler.bind(this)}>
           <input ref="msg" placeholder="..." />
           <button>Send</button>
