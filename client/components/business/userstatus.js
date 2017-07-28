@@ -17,6 +17,7 @@ class UserStatus extends Component {
    * @return {[type]} [description]
    */
   getUserName(){
+    if(!this.checkUser()) return;
     const { emails: [{address}] } = Meteor.user();
     return address;
   }

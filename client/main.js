@@ -13,8 +13,7 @@ import Dashboard from './components/pages/dashboard';
 
 const routes = (
   <BrowserRouter history={browserHistory}>
-    <div>
-      <Route component={Redirect} />
+    <div>      
       <Route exact path="/" component={LoginForm}/>
       <Route path="/signup" component={SignUp}/>
       <Route path="/signin" component={LoginForm}/>
