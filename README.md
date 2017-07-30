@@ -43,6 +43,7 @@ export HTTPS_PROXY=http://xxx.xxx:port
 
 meteor npm install --save react-addons-pure-render-mixin
 meteor add react-meteor-data
+//removed meteor add reywood:publish-composite
 meteor npm install --save react-router react-router-dom
 meteor npm install --save bcrypt
 
@@ -57,3 +58,11 @@ Example: https://www.meteor.com/tutorials/react/adding-user-accounts
 ## Custom user management
 
 http://www.mrscottmcallister.com/custom-authentication-in-meteor/
+
+## Related Documents
+I am looking this article about it:
+https://www.discovermeteor.com/blog/reactive-joins-in-meteor/
+I am thinking a good approach can be:
+https://github.com/peerlibrary/meteor-reactive-publish
+
+// removed https://github.com/englue/meteor-publish-composite

@@ -4,7 +4,8 @@ Meteor.methods({
   'minichatcollection.insert': function(content) {
      return MiniChatCollection.insert({
        createdAt: new Date(),
-       content: content
+       content: content,
+       authorId: this.userId
      });
    }
 });
