@@ -4,21 +4,22 @@ class UserStatus extends Component {
   constructor(props) {
     super(props);
   }
+
   /**
    * Custom interface to check user
    * @return {[type]} [description]
    */
-  checkUser(){
-    return ( Meteor.user() ) ? true : false;
+  checkUser() {
+    return Meteor.userId() ? true : false;
   }
 
   /**
    * [getUserName description]
    * @return {[type]} [description]
    */
-  getUserName(){
-    if(!this.checkUser()) return;
-    const { emails: [{address}] } = Meteor.user();
+  getUserName() {
+    if (!Meteor.user()) return;
+    const { emails: [{ address }] } = Meteor.user();
     return address;
   }
 }

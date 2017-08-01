@@ -1,28 +1,23 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Switch, Route } from 'react-router-dom';
 import Redirect from '../parts/redirect';
 import Header from '../parts/header';
+import Footer from '../parts/footer';
 import MiniChat from '../parts/minichat';
+import MyTeams from './back/team/myteams';
+import CreateTeam from './back/team/team_create';
 
-class Dashboard extends Redirect{
-  render (){
+class Dashboard extends Redirect {
+  render() {
     return (
       <div>
         <Header />
-        <div className="layout">
-          <div className="sidebar">
-            <h3>Sidebar</h3>
-            <p>link</p>
-          </div>
-          <div className="content">
-            <h3>Content Page</h3>
-            <p>page</p>
-          </div>
-          <MiniChat />
-        </div>
-        <div className="footer">
-          <div>Wiki</div>
-        </div>
+        <Switch>
+          <Route exact path="/dashboard" component={MyTeams} />
+          <Route path="/dashboard/team/:teamId" component={CreateTeam} />
+        </Switch>
+        <Footer />
       </div>
     );
   }

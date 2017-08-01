@@ -1,38 +1,58 @@
 /* CSS declarations go here */
-body{
+body {
   padding: 0;
   margin: 0;
 }
-.header-contener{
+.header-contener {
   padding: 10px;
   background: #ccc;
   display: flex;
 }
 .header-app-name,
-.header-app-profile{
+.header-app-profile {
   flex-grow: 1;
 }
 
-
-.footer{
+.footer {
   padding: 10px;
   background: #ccc;
   text-align: center;
 }
-.layout{
+.layout {
   display: flex;
 }
-.sidebar,.content,.chat{
-  padding:10px;
+.sidebar,
+.content,
+.chat {
+  padding: 10px;
 }
-.sidebar{
+.sidebar {
   flex: 1;
   background: rgba(255, 0, 0, 0.2);
 }
-.content{
+.content {
   flex: 3;
 }
-.chat{
+.chat {
   flex: 1;
   background: rgba(0, 255, 0, 0.2);
+}
+
+/**
+ * MyTeams Display
+ * @type {[type]}
+ */
+.team-contener {
+  align-items: center;
+}
+.team-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.team-box {
+  margin: 10px;
+  border: solid 1px red;
+  flex-basis: auto;
+  flex-grow: 1;
 }
