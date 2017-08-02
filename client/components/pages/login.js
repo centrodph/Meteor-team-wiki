@@ -38,7 +38,7 @@ class LoginForm extends UserStatus {
   render(){
     return (
       <div className="login-contener">
-        Login content
+        <h3>Login</h3>
         {this.state.error}
         <form onSubmit={this.submitHandler.bind(this)}>
           <div className="form-input login-input-email">
