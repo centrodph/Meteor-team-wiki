@@ -19,4 +19,6 @@ Meteor.startup(() => {
   Meteor.publish('myteams', function() {
     return TeamCollection.find({ users: { $in: [this.userId] } });
   });
+
+  // TeamCollection.remove({}); //Clear test data
 });

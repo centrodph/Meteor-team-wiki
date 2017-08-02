@@ -26,7 +26,6 @@ const routes = (
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={LoginForm} />
       <Route path="/dashboard" component={Dashboard} />
-      {Meteor.userId()}
     </div>
   </BrowserRouter>
 );

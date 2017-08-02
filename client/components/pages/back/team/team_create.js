@@ -8,7 +8,12 @@ class CreateTeam extends Component {
   submitHandler(event) {
     event.preventDefault();
     const { name, description } = this.refs;
-    Meteor.call('teamcollection.create', name.value, description.value);
+    Meteor.call(
+      'teamcollection.update',
+      this.props.match.params.teamId,
+      name.value,
+      description.value
+    );
     this.refs.name.value = '';
     this.refs.description.value = '';
   }

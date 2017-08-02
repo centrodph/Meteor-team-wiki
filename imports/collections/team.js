@@ -6,12 +6,29 @@ Meteor.methods({
       name,
       description,
       createdAt: new Date(),
+      updatedAt: new Date(),
       owner: this.userId,
       invitations: [],
       users: [this.userId],
       documents: [],
       channels: []
     });
+  },
+  'teamcollection.update': function(teamId, name, description) {
+    console.log(teamId, name, description);
+    return TeamCollection.update(
+      {
+        _id: { $eq: teamId },
+        owner: { $eq: this.userId }
+      },
+      {
+        $set: {
+          name,
+          description,
+          updatedAt: new Date()
+        }
+      }
+    );
   },
   //Only can be access for owner
   'teamcollection.invite': function(team, email) {

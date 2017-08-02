@@ -1,12 +1,22 @@
-.login-contener{
-  padding: 10px;  
-  h3{}
-  .form-input{
-
-    label{}
-    input{}
-    button{
-      background: green;
+@import '../global/buttons';
+.login-contener {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .login-box {
+    flex-shrink: 1;
+  }
+  h3 {
+    text-align: center;
+  }
+  .form-input {
+    label {
+    }
+    input {
+    }
+    button {
+      @extend .btn-basic;
     }
   }
 }
