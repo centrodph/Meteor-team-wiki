@@ -4,7 +4,12 @@ class UserStatus extends Component {
   constructor(props) {
     super(props);
   }
-
+  /**
+   * Navigate to profile Page
+   */
+  goToMyProfile() {
+    this.props.history.push('/dashboard/myprofile');
+  }
   /**
    * Custom interface to check user
    * @return {[type]} [description]
@@ -19,8 +24,8 @@ class UserStatus extends Component {
    */
   getUserName() {
     if (!Meteor.user()) return;
-    const { emails: [{ address }] } = Meteor.user();
-    return address;
+    const { username } = Meteor.user();
+    return username;
   }
 }
 

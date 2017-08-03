@@ -6,13 +6,14 @@ class Header extends UserStatus {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
       <div className="header-contener">
         <div className="header-app-name">Meteor Wiki</div>
         <div className="header-app-profile">
-          {this.getUserName()}
+          <a href="javascript:void(0);" onClick={this.goToMyProfile.bind(this)}>
+            {this.getUserName()}
+          </a>
         </div>
       </div>
     );

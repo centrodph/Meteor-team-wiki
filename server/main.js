@@ -9,7 +9,7 @@ Meteor.startup(() => {
   Meteor.publish('minichatcollection', function() {
     return MiniChatCollection.find({});
   });
-  Meteor.publish('myuser', function() {
+  Meteor.publish('myprofile', function() {
     return Meteor.users.find({ _id: this.userId });
   });
   Meteor.publish('usernames', function(ids) {
@@ -20,5 +20,6 @@ Meteor.startup(() => {
     return TeamCollection.find({ users: { $in: [this.userId] } });
   });
 
-  // TeamCollection.remove({}); //Clear test data
+   //TeamCollection.remove({}); //Clear test Teams
+   //Meteor.users.remove({}); //Clear test Users
 });
