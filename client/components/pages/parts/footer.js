@@ -12,7 +12,7 @@ class Footer extends Component {
           <div className="container">
             © {new Date().getFullYear()} METEORWIKI
             <a className="grey-text text-lighten-4 right" href="#!">
-              More Links
+              ABOUT METEORWIKI
             </a>
           </div>
         </div>

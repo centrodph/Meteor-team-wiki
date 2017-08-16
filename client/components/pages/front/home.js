@@ -31,10 +31,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header currentpath={this.props.location.pathname} />
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route path="/signup" component={SignUp} />
+          <Route exact path="/signup" component={SignUp} />
         </Switch>
         <Footer />
       </div>

@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import { Accounts } from 'meteor/accounts-base';
+import Notice from '../parts/notice';
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = { error: null };
-  }
-
-  componentDidMount() {
-    console.log('component mounted');
-  }
-
-  componentWillUnmount() {
-    console.log('component will unmount');
   }
 
   submitHandler(event) {
@@ -42,8 +35,8 @@ class SignUp extends Component {
   render() {
     return (
       <div className="login-contener">
-        Create Account
-        {this.state.error}
+        <h3>Create Account</h3>
+        <Notice error={this.state.error} />
         <form onSubmit={this.submitHandler.bind(this)}>
           <div className="form-input signup-input-username">
             <label>Name</label>
