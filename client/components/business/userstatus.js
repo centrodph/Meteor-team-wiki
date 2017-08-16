@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
-
-class UserStatus extends Component {
-  constructor(props) {
-    super(props);
-  }
+class UserStatus {
+  constructor(props) {}
   /**
    * Navigate to profile Page
    */

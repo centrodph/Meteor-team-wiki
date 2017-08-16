@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import UserStatus from '../business/userstatus';
+import Notice from '../parts/notice';
 
-class LoginForm extends UserStatus {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,8 +10,7 @@ class LoginForm extends UserStatus {
   }
 
   componentDidMount() {
-    console.log('component mounted LoginForm');
-    //this.view = Blaze.render(,this.refs.login);
+    console.debug('component mounted LoginForm');
   }
 
   componentWillUnmount() {
@@ -39,7 +38,7 @@ class LoginForm extends UserStatus {
       <div className="login-contener">
         <div className="login-box">
           <h3>Login</h3>
-          {this.state.error}
+          <Notice error={this.state.error} />
           <form onSubmit={this.submitHandler.bind(this)}>
             <div className="form-input login-input-email">
               <label>Email</label>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import UserStatus from '../business/userstatus';
 
-class Redirect extends UserStatus {
+class Redirect extends Component {
   constructor(props) {
     super(props);
   }
