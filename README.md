@@ -71,3 +71,23 @@ https://github.com/peerlibrary/meteor-reactive-publish
 
 Add redux to MeteorJs
 https://www.npmjs.com/package/react-redux-meteor
+
+
+## Funtions description
+
+Team: api/team
+  + Add: name, date, description, owner
+  + Update: name , date, description
+  + Delete: teamid
+  + Add users: teamid, userid
+  + Add channel: teamid, channelid
+
+User: api/user
+  + Add team: teamid
+  + Add document: document
+  + Update team: teamid, status
+
+channel: api/channel
+  + Add channel: name, date, teamid
+  + Add message: msgid
+  + Update channel: channelid, status
