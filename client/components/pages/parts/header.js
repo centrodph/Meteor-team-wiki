@@ -6,13 +6,43 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userstatus: Meteor.userId() ? true : false,
       links: [
-        { to: '/', text: 'Login', name: 'login', active: 'active' },
-        { to: '/signup', text: 'Register', name: 'register', active: '' }
+        {
+          to: '/',
+          text: 'Login',
+          name: 'login',
+          active: 'active',
+          private: false
+        },
+        {
+          to: '/signup',
+          text: 'Register',
+          name: 'register',
+          active: '',
+          private: false
+        },
+        {
+          to: '/dashboard',
+          text: 'Panel',
+          name: 'panel',
+          active: '',
+          private: true
+        },
+        {
+          to: '/dashboard/myprofile',
+          text: 'Profile',
+          name: 'profile',
+          active: '',
+          private: true
+        }
       ]
     };
   }
 
+  checkUser() {
+    return Meteor.userId() ? true : false;
+  }
   /**
    * Executed when a nav is clicked
    * @method btnClicked
@@ -38,19 +68,21 @@ class Header extends Component {
             MeteorWiki
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            {this.state.links.map(link => {
-              return (
-                <li key={link.name}>
-                  <Link
-                    to={link.to}
-                    className={link.active}
-                    onClick={this.btnClicked.bind(this, link)}
-                  >
-                    {link.text}
-                  </Link>
-                </li>
-              );
-            })}
+            {this.state.links
+              .filter(link => link.private == this.state.userstatus)
+              .map(link => {
+                return (
+                  <li key={link.name}>
+                    <Link
+                      to={link.to}
+                      className={link.active}
+                      onClick={this.btnClicked.bind(this, link)}
+                    >
+                      {link.text}
+                    </Link>
+                  </li>
+                );
+              })}
           </ul>
         </div>
       </nav>

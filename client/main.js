@@ -4,17 +4,22 @@ import {
   BrowserRouter,
   Router,
   Route,
+  Switch,
   IndexRoute,
   browserHistory
 } from 'react-router-dom';
 
 //components
 import Home from './components/pages/front/home';
+import Dashboard from './components/pages/back/dashboard';
 
 const routes = (
   <BrowserRouter history={browserHistory}>
     <div>
-      <Route path="/" component={Home} />
+      <Switch>
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/" component={Home} />
+      </Switch>
     </div>
   </BrowserRouter>
 );

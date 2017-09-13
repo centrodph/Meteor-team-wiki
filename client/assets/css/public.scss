@@ -17,6 +17,7 @@ button {
 
 #nav-mobile {
   a.active {
-    background: blue;
+    @extend .red;
+    @extend .darken-1;
   }
 }

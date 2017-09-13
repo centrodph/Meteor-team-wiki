@@ -44,7 +44,7 @@ export HTTPS_PROXY=http://xxx.xxx:port
 meteor npm install --save react-addons-pure-render-mixin
 meteor add react-meteor-data
 //removed meteor add reywood:publish-composite
-meteor add fourseven:scss //compile SASS // docs: https://github.com/fourseven/meteor-scss 
+meteor add fourseven:scss //compile SASS // docs: https://github.com/fourseven/meteor-scss
 meteor npm install --save react-router react-router-dom
 meteor npm install --save bcrypt
 
@@ -67,3 +67,7 @@ I am thinking a good approach can be:
 https://github.com/peerlibrary/meteor-reactive-publish
 
 // removed https://github.com/englue/meteor-publish-composite
+
+
+Add redux to MeteorJs
+https://www.npmjs.com/package/react-redux-meteor
