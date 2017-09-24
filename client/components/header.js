@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -40,6 +41,9 @@ class Header extends Component {
   getLinksLogged() {
     return (
       <div>
+        <li>
+          <Link to="/admin/team">Teams</Link>
+        </li>
         <li>
           <a href="javascript:void(0);" onClick={this.toLogout.bind(this)}>
             Logout

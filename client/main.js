@@ -22,6 +22,8 @@ const createAppStore = applyMiddleware(thunk)(createStore);
 import Header from './components/header';
 import Login from './components/login';
 import Register from './components/register';
+import Administration from './components/admin';
+import TeamList from './components/team/team_list';
 
 const routes = (
   <Provider store={createAppStore(appReducers)}>
@@ -31,6 +33,7 @@ const routes = (
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/admin/team" component={TeamList} />
         </Switch>
       </div>
     </BrowserRouter>
