@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter,
-  Router,
-  Route,
-  Switch,
-  IndexRoute,
-  browserHistory
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, browserHistory } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
+import _Hammer from 'hammerjs';
+import '/node_modules/materialize-css/dist/js/materialize';
+
+// made global
+Hammer = _Hammer;
+Materialize = window.Materialize;
+
+//Custom
+import appReducers from './reducers';
+
+//Setup Middlewares
+const createAppStore = applyMiddleware(thunk)(createStore);
 
 //components
-import Home from './components/pages/front/home';
-import Dashboard from './components/pages/back/dashboard';
+import Header from './components/header';
+import Login from './components/login';
+import Register from './components/register';
 
 const routes = (
-  <BrowserRouter history={browserHistory}>
-    <div>
-      <Switch>
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/" component={Home} />
-      </Switch>
-    </div>
-  </BrowserRouter>
+  <Provider store={createAppStore(appReducers)}>
+    <BrowserRouter history={browserHistory}>
+      <div>
+        <Route component={Header} />
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  </Provider>
 );
 
 Meteor.startup(() => {

@@ -1,42 +1,24 @@
 import React, { Component } from 'react';
-import { Accounts } from 'meteor/accounts-base';
-import Notice from '../parts/notice';
+import Notice from './notice';
+import { connect } from 'react-redux';
+import { doRegister } from '../actions/register_actions';
 
-class SignUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { error: null };
-  }
-
+class Register extends Component {
   submitHandler(event) {
     event.preventDefault();
     const { email, password, username } = this.refs;
-    Accounts.createUser(
-      {
-        username: username.value,
-        email: email.value,
-        password: password.value
-      },
-      err => {
-        if (err) {
-          this.setState({
-            error: err.reason
-          });
-        } else {
-          this.props.history.push('/');
-        }
-      }
-    );
-    username.value = null;
-    email.value = null;
-    password.value = null;
+    this.props.doRegister(email.value, password.value, username.value);
   }
-
+  renderError() {
+    if (this.props.register.error) {
+      return <Notice msgtype="error" msg={this.props.register.error.reason} />;
+    }
+  }
   render() {
     return (
       <div className="login-contener">
         <h3>Create Account</h3>
-        <Notice error={this.state.error} />
+        {this.renderError()}
         <form onSubmit={this.submitHandler.bind(this)}>
           <div className="form-input signup-input-username">
             <label>Name</label>
@@ -58,5 +40,7 @@ class SignUp extends Component {
     );
   }
 }
-
-export default SignUp;
+function mapStateToProps(state, ownState) {
+  return { register: state.register };
+}
+export default connect(mapStateToProps, { doRegister })(Register);
