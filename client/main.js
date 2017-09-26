@@ -24,6 +24,8 @@ import Login from './components/login';
 import Register from './components/register';
 import Administration from './components/admin';
 import TeamList from './components/team/team_list';
+import { fetchTeams } from './actions/team_actions';
+import DataSource from './hoc/dataSource';
 
 const routes = (
   <Provider store={createAppStore(appReducers)}>
@@ -33,7 +35,10 @@ const routes = (
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/admin/team" component={TeamList} />
+          <Route
+            path="/admin/team"
+            component={DataSource(TeamList, fetchTeams)}
+          />
         </Switch>
       </div>
     </BrowserRouter>
