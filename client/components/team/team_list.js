@@ -25,18 +25,23 @@ class TeamList extends Component {
     });
   }
   render() {
-    console.log('TeamList', this.props);
     return (
       <div className="team-list">
         <h3>My Teams</h3>
         <div className="team-boxes">
           {this.getListTeam()}
+          <div className="team-box">
+            <div className="team-box-name">
+              <button onClick={showTeamForm}>+ add team</button>
+            </div>
+          </div>
         </div>
         <CreateTeam />
       </div>
     );
   }
 }
+
 function mapStateToProps(state) {
   return {
     teams: state.myteams

@@ -73,6 +73,9 @@ Add redux to MeteorJs
 https://www.npmjs.com/package/react-redux-meteor
 
 
+Add modal
+https://reactcommunity.org/react-modal/
+
 ## Funtions description
 
 Team: api/team
@@ -91,3 +94,13 @@ channel: api/channel
   + Add channel: name, date, teamid
   + Add message: msgid
   + Update channel: channelid, status
+
+## Meteor suscribe onReady dispatch
+const suscription = Meteor.subscribe('myteams', {
+  onReady: function() {
+    return dispatch(fetchTeamsLoaded(YourCollection.find({}).fetch()));
+  },
+  onError: function() {
+    throw new Error('Error was ocurred');
+  }
+});

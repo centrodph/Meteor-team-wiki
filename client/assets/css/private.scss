@@ -1,1 +1,13 @@
 @import "{}/client/assets/css/_imports.scss";
+
+.team-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .team-box {
+    flex-grow: 1;
+    border-radius: 5px;
+    border: solid 1px gray;
+    margin: 10px;
+  }
+}
