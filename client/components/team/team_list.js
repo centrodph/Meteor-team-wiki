@@ -2,23 +2,40 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchTeams } from '../../actions/team_actions';
 import CreateTeam from './team_create';
+import ReactModal from 'react-modal';
 
 class TeamList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false
+    };
+  }
+  handlerOpenModal() {
+    this.setState({
+      showModal: true
+    });
+  }
+  handleCloseModal() {
+    this.setState({
+      showModal: false
+    });
+  }
   getListTeam() {
     return this.props.teams.map(team => {
       return (
-        <div className="team-box" key={team._id}>
-          <a href="javascript:void(0);">Edit</a>
-          <div className="team-box-name">
-            <h3>
+        <div className="team-box card blue-grey darken-1" key={team._id}>
+          <div className="card-content white-text">
+            <span className="card-title">
               {team.name}
-            </h3>
+            </span>
+            <p>
+              {team.description}
+            </p>
           </div>
-          <div className="team-box-description">
-            {team.description}
-          </div>
-          <div className="team-box-actions">
-            <button>Go</button>
+          <div className="card-action">
+            <a href="#">Edit</a>
+            <a href="#">Detail</a>
           </div>
         </div>
       );
@@ -32,11 +49,28 @@ class TeamList extends Component {
           {this.getListTeam()}
           <div className="team-box">
             <div className="team-box-name">
-              <button onClick={showTeamForm}>+ add team</button>
+              <button onClick={this.handlerOpenModal.bind(this)}>
+                + add team
+              </button>
             </div>
           </div>
         </div>
-        <CreateTeam />
+        <ReactModal isOpen={this.state.showModal} contentLabel="CreateTeam">
+          <div className="content-modal">
+            <div className="content-modal-box">
+              <button onClick={this.handleCloseModal.bind(this)}>
+                Close Modal
+              </button>
+              <br />
+              <br />
+              <br />
+              <CreateTeam />
+              <br />
+              <br />
+              <br />
+            </div>
+          </div>
+        </ReactModal>
       </div>
     );
   }

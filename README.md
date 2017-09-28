@@ -96,6 +96,9 @@ channel: api/channel
   + Update channel: channelid, status
 
 ## Meteor suscribe onReady dispatch
+https://marmelab.com/blog/2015/11/27/meteor-webpack-react-redux.html
+
+
 const suscription = Meteor.subscribe('myteams', {
   onReady: function() {
     return dispatch(fetchTeamsLoaded(YourCollection.find({}).fetch()));

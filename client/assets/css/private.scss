@@ -6,8 +6,23 @@
   justify-content: space-around;
   .team-box {
     flex-grow: 1;
+    flex-basis: 20%;
     border-radius: 5px;
-    border: solid 1px gray;
     margin: 10px;
+  }
+}
+
+.ReactModal__Overlay {
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .ReactModal__Content {
+    position: inherit !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 70%;
   }
 }
