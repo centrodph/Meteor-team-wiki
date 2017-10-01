@@ -24,7 +24,8 @@ import Login from './components/login';
 import Register from './components/register';
 import Administration from './components/admin';
 import TeamList from './components/team/team_list';
-import { fetchTeams } from './actions/team_actions';
+import TeamAdmin from './components/team/team_admin';
+import { fetchTeams, fetchCurrentTeam } from './actions/team_actions';
 import DataSource from './hoc/dataSource';
 
 const routes = (
@@ -35,6 +36,10 @@ const routes = (
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route
+            path="/admin/team/:teamId/edit"
+            component={DataSource(TeamAdmin, fetchCurrentTeam, 'teamId')}
+          />
           <Route
             path="/admin/team"
             component={DataSource(TeamList, fetchTeams)}

@@ -2,7 +2,8 @@ import {
   FETCH_TEAMS,
   FETCH_TEAMS_ERROR,
   FETCH_TEAMS_SUCCESS,
-  CREATE_TEAM_SUCCESS
+  CREATE_TEAM_SUCCESS,
+  CURRENT_TEAM_SUCCESS
 } from './types';
 import { TeamCollection } from '../../imports/collections/team';
 
@@ -26,6 +27,22 @@ export function createTeamSuccess(team) {
   return {
     type: CREATE_TEAM_SUCCESS,
     payload: team
+  };
+}
+
+export function currentTeamSuccess(team) {
+  return {
+    type: CURRENT_TEAM_SUCCESS,
+    payload: team
+  };
+}
+export function fetchCurrentTeam({ teamId }) {
+  console.log(teamId);
+  return (dispatch, getState) => {
+    Tracker.autorun(() => {
+      Meteor.subscribe('currentteam', teamId);
+      dispatch(currentTeamSuccess(TeamCollection.find(teamId).fetch()));
+    });
   };
 }
 

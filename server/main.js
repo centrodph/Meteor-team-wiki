@@ -19,7 +19,13 @@ Meteor.startup(() => {
   Meteor.publish('myteams', function() {
     return TeamCollection.find({ users: { $in: [this.userId] } });
   });
+  Meteor.publish('currentteam', function(teamId) {
+    return TeamCollection.find({
+      _id: { $eq: teamId },
+      users: { $in: [this.userId] }
+    });
+  });
 
-   //TeamCollection.remove({}); //Clear test Teams
-   //Meteor.users.remove({}); //Clear test Users
+  //TeamCollection.remove({}); //Clear test Teams
+  //Meteor.users.remove({}); //Clear test Users
 });

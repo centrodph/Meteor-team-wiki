@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchTeams } from '../../actions/team_actions';
 import CreateTeam from './team_create';
 import ReactModal from 'react-modal';
+import { Link } from 'react-router-dom';
 
 class TeamList extends Component {
   constructor(props) {
@@ -34,8 +35,8 @@ class TeamList extends Component {
             </p>
           </div>
           <div className="card-action">
-            <a href="#">Edit</a>
-            <a href="#">Detail</a>
+            <Link to={`/admin/team/${team._id}/edit`}>Edit</Link>
+            <Link to={`/admin/team/${team._id}/board`}>Board</Link>
           </div>
         </div>
       );

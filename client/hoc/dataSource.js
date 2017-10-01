@@ -8,10 +8,17 @@ import { connect } from 'react-redux';
  * @param  {action creator } actioncreator
  * @return {React.Component}
  */
-export default function(WrappedComponent, actioncreator) {
+export default function(WrappedComponent, actioncreator, ...params) {
   class DataSource extends Component {
+    getParamRoute() {
+      let objParam = {};
+      params.forEach(p => {
+        objParam[p] = this.props.match.params[p];
+      });
+      return objParam;
+    }
     componentWillMount() {
-      this.props.dispatch(actioncreator());
+      this.props.dispatch(actioncreator(this.getParamRoute()));
     }
     render() {
       return <WrappedComponent {...this.props} />;
