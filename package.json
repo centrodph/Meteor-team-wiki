@@ -2,7 +2,8 @@
   "name": "meteor-wiki",
   "private": true,
   "scripts": {
-    "start": "meteor run --port 5050"
+    "start": "export MONGO_URL=mongodb://SERVERNAME:PORT/YOUR_DB_APP meteor run --port 5050",
+    "dev": "export MONGO_URL=mongodb://localhost:27017/meteorwiki && meteor run --port 5050"
   },
   "dependencies": {
     "babel-runtime": "^6.20.0",
