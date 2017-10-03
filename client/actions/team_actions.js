@@ -42,7 +42,7 @@ export function currentTeamSuccess(teams) {
   return {
     type: CURRENT_TEAM_SUCCESS,
     error: false,
-    payload: teams
+    payload: teams[0]
   };
 }
 export function fetchCurrentTeam({ teamId }) {

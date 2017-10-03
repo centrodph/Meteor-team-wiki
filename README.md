@@ -107,3 +107,10 @@ const suscription = Meteor.subscribe('myteams', {
     throw new Error('Error was ocurred');
   }
 });
+
+
+
+
+## redux form
+
+http://www.thegreatcodeadventure.com/react-redux-tutorial-part-vi-the-edit-feature/
