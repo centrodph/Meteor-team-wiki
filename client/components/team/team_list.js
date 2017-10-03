@@ -35,7 +35,7 @@ class TeamList extends Component {
             </p>
           </div>
           <div className="card-action">
-            <Link to={`/admin/team/${team._id}/edit`}>Edit</Link>
+            <Link to={`/admin/team/${team._id}/admin`}>Edit</Link>
             <Link to={`/admin/team/${team._id}/board`}>Board</Link>
           </div>
         </div>

@@ -37,7 +37,7 @@ const routes = (
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route
-            path="/admin/team/:teamId/edit"
+            path="/admin/team/:teamId/admin"
             component={DataSource(TeamAdmin, fetchCurrentTeam, 'teamId')}
           />
           <Route
