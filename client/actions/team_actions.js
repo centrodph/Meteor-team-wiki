@@ -3,7 +3,8 @@ import {
   FETCH_TEAMS_ERROR,
   FETCH_TEAMS_SUCCESS,
   CREATE_TEAM_SUCCESS,
-  CURRENT_TEAM_SUCCESS
+  CURRENT_TEAM_SUCCESS,
+  INVALID_TEAM
 } from './types';
 import { TeamCollection } from '../../imports/collections/team';
 
@@ -30,10 +31,18 @@ export function createTeamSuccess(team) {
   };
 }
 
-export function currentTeamSuccess(team) {
+export function currentTeamSuccess(teams) {
+  if (teams.length != 1) {
+    return {
+      type: CURRENT_TEAM_SUCCESS,
+      error: 'Acceso denegado',
+      payload: teams
+    };
+  }
   return {
     type: CURRENT_TEAM_SUCCESS,
-    payload: team
+    error: false,
+    payload: teams
   };
 }
 export function fetchCurrentTeam({ teamId }) {

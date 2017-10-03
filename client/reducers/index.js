@@ -4,8 +4,10 @@ import registerReducer from './register_reducer';
 import autenticatedReducer from './autenticated_reducer';
 import teamsReducer from './teams_reducer';
 import currentTeamReducer from './current_team_reducer';
+import errorReducer from './error_reducer';
 
 const appReducers = combineReducers({
+  error: errorReducer,
   login: loginReducer,
   register: registerReducer,
   autenticated: autenticatedReducer,
