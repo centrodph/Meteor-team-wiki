@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import loginReducer from './login_reducer';
 import registerReducer from './register_reducer';
 import autenticatedReducer from './autenticated_reducer';
@@ -7,6 +8,7 @@ import currentTeamReducer from './current_team_reducer';
 import errorReducer from './error_reducer';
 
 const appReducers = combineReducers({
+  form: formReducer,
   error: errorReducer,
   login: loginReducer,
   register: registerReducer,
