@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Notice from '../notice';
 import formAdmin from '../../../imports/forms/teamAdmin';
-
-console.log(formAdmin);
+import _ from 'lodash';
+import validators from '../../../imports/validators';
 
 class TeamAdmin extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class TeamAdmin extends Component {
     console.log(event.target);
   }
   renderField({ input, label, type, meta: { touched, error, warning } }) {
+    console.log(error);
     return (
       <div>
         <label>
@@ -22,15 +23,7 @@ class TeamAdmin extends Component {
         </label>
         <div>
           <input {...input} placeholder={label} type={type} />
-          {touched &&
-            ((error &&
-              <span>
-                {error}
-              </span>) ||
-              (warning &&
-                <span>
-                  {warning}
-                </span>))}
+          {error}
         </div>
       </div>
     );
@@ -50,9 +43,6 @@ class TeamAdmin extends Component {
 
   render() {
     const { handleSubmit, pristine, reset, submitting, fields } = this.props;
-
-    console.log(this.props.team);
-    if (!this.props.team) return <div>Loading</div>;
     if (this.props.team.error) {
       return <Notice msgtype="error" msg={this.props.team.error} />;
     }
@@ -74,13 +64,28 @@ class TeamAdmin extends Component {
 
 function validate(values) {
   const errors = {};
+  const v = formAdmin.getValidators();
+  _.forEach(values, function(value, key) {
+    _.forEach(v, function(vvalue, vkey) {
+      if (key == vkey) {
+        vvalue.forEach(validator => {
+          const r = validators[validator.type](value, validator.param);
+          if (r) {
+            console.log('ERROR', key, r);
+            errors[key] = r;
+          }
+        });
+      }
+    });
+  });
   return errors;
 }
 
 function mapStateToProps(state) {
+  const { name, description } = state.currentTeam;
   return {
     team: state.currentTeam,
-    initialValues: state.currentTeam
+    initialValues: { name, description }
   };
 }
 
