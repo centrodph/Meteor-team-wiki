@@ -1,4 +1,4 @@
-import formBuilder from './formbasic';
+import { formBuilder } from './formhelper';
 import FormInputText from './element.input';
 import FormInputTextarea from './element.textarea';
 const formTeamAdmin = new formBuilder([

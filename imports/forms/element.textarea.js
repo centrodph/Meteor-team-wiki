@@ -1,11 +1,7 @@
 import React from 'react';
+import FormFieldError from './element.field.error';
 
-const FormInputTextarea = ({
-  input,
-  label,
-  type,
-  meta: { touched, error, warning }
-}) => {
+const FormInputTextarea = ({ input, label, type, meta }) => {
   const cId = `cId${Math.round(Math.random() * 100)}`;
   return (
     <div>
@@ -20,7 +16,7 @@ const FormInputTextarea = ({
           id={cId}
           className="materialize-textarea"
         />
-        {error}
+        <FormFieldError {...meta} />
       </div>
     </div>
   );

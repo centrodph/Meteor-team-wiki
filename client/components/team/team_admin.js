@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Notice from '../notice';
 import formAdmin from '../../../imports/forms/teamAdmin';
-import _ from 'lodash';
-import validators from '../../../imports/validators';
+import { formValidate } from '../../../imports/forms/formhelper';
+import { adminTeam } from '../../actions/team_actions';
 
 class TeamAdmin extends Component {
-  constructor(props) {
-    super(props);
-  }
   submitHandler(values) {
-    console.log(event);
+    console.log(this.props.team);
+    this.props.adminTeam(this.props.team._id, values);
   }
   renderFields(field) {
     return (
@@ -30,7 +28,7 @@ class TeamAdmin extends Component {
       <div className="team-admin">
         <div className="team-admin-box">
           <h3>Team Admin</h3>
-          <form onSubmit={handleSubmit(this.submitHandler)}>
+          <form onSubmit={handleSubmit(this.submitHandler.bind(this))}>
             {fields.map(this.renderFields.bind(this))}
             <div className="form-input login-input-submit">
               <button>Edit</button>
@@ -42,25 +40,6 @@ class TeamAdmin extends Component {
   }
 }
 
-function validate(values) {
-  const errors = {};
-  const v = formAdmin.getValidators();
-  console.log(v);
-  _.forEach(values, function(value, key) {
-    _.forEach(v, function(vvalue, vkey) {
-      if (key == vkey) {
-        vvalue.forEach(validator => {
-          const r = validators[validator.type](value, validator.param);
-          if (r) {
-            errors[key] = r;
-          }
-        });
-      }
-    });
-  });
-  return errors;
-}
-
 function mapStateToProps(state) {
   const { name, description } = state.currentTeam;
   return {
@@ -69,10 +48,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(
+export default connect(mapStateToProps, { adminTeam })(
   reduxForm({
     form: 'teamadmin',
-    validate,
+    validate: formValidate.bind(formAdmin),
     fields: formAdmin.getArray(),
     enableReinitialize: true
   })(TeamAdmin)

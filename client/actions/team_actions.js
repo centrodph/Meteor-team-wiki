@@ -68,3 +68,17 @@ export function createTeam(name, description) {
     });
   };
 }
+
+export function adminTeam(id, { name, description }) {
+  return (dispatch, getState) => {
+    Meteor.call('teamcollection.update', id, name, description, function(
+      err,
+      result
+    ) {
+      if (err) {
+        throw new Error('UNABLE TO EDIT TEAM');
+      }
+      return dispatch(fetchTeams());
+    });
+  };
+}
