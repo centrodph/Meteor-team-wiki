@@ -10,33 +10,13 @@ class TeamAdmin extends Component {
   constructor(props) {
     super(props);
   }
-  submitHandler(event) {
-    event.preventDefault();
-    console.log(event.target);
-  }
-  renderField({ input, label, type, meta: { touched, error, warning } }) {
-    console.log(error);
-    return (
-      <div>
-        <label>
-          {label}
-        </label>
-        <div>
-          <input {...input} placeholder={label} type={type} />
-          {error}
-        </div>
-      </div>
-    );
+  submitHandler(values) {
+    console.log(event);
   }
   renderFields(field) {
-    console.log(field);
     return (
       <div key={field.name}>
-        <Field
-          name={field.name}
-          component={this.renderField}
-          type={field.type}
-        />
+        <Field {...field} />
       </div>
     );
   }
@@ -50,10 +30,10 @@ class TeamAdmin extends Component {
       <div className="team-admin">
         <div className="team-admin-box">
           <h3>Team Admin</h3>
-          <form onSubmit={this.submitHandler.bind(this)}>
+          <form onSubmit={handleSubmit(this.submitHandler)}>
             {fields.map(this.renderFields.bind(this))}
             <div className="form-input login-input-submit">
-              <button>Create</button>
+              <button>Edit</button>
             </div>
           </form>
         </div>
@@ -65,13 +45,13 @@ class TeamAdmin extends Component {
 function validate(values) {
   const errors = {};
   const v = formAdmin.getValidators();
+  console.log(v);
   _.forEach(values, function(value, key) {
     _.forEach(v, function(vvalue, vkey) {
       if (key == vkey) {
         vvalue.forEach(validator => {
           const r = validators[validator.type](value, validator.param);
           if (r) {
-            console.log('ERROR', key, r);
             errors[key] = r;
           }
         });

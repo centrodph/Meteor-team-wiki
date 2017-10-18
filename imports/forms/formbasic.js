@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default function(props) {
   this.props = props;
   this.getArray = () => {

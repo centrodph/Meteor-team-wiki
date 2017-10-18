@@ -1,10 +1,11 @@
 import formBuilder from './formbasic';
+import FormInputText from './element.input';
+import FormInputTextarea from './element.textarea';
 const formTeamAdmin = new formBuilder([
   {
     name: 'name',
-    type: 'text',
-    component: 'input',
     label: 'Team name',
+    component: FormInputText,
     validators: [
       {
         type: 'required',
@@ -12,19 +13,18 @@ const formTeamAdmin = new formBuilder([
       },
       {
         type: 'minlenght',
-        param: { leght: 5 }
+        param: { length: 5 }
       },
       {
         type: 'maxlenght',
-        param: { leght: 200 }
+        param: { length: 200 }
       }
     ]
   },
   {
     name: 'description',
-    type: 'textarea',
     label: 'Team description',
-    component: 'textarea',
+    component: FormInputTextarea,
     validators: [
       {
         type: 'required',
@@ -32,11 +32,11 @@ const formTeamAdmin = new formBuilder([
       },
       {
         type: 'minlenght',
-        param: { leght: 5 }
+        param: { length: 5 }
       },
       {
         type: 'maxlenght',
-        param: { leght: 200 }
+        param: { length: 200 }
       }
     ]
   }
