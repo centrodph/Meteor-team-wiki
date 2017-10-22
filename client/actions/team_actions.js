@@ -62,7 +62,7 @@ export function createTeam(name, description) {
       result
     ) {
       if (err) {
-        throw new Error('UNABLE TO CREATE TEAM');
+        alert(err.message);
       }
       return dispatch(fetchTeams());
     });

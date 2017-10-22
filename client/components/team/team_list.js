@@ -44,34 +44,36 @@ class TeamList extends Component {
   }
   render() {
     return (
-      <div className="team-list">
-        <h3>My Teams</h3>
-        <div className="team-boxes">
-          {this.getListTeam()}
-          <div className="team-box">
-            <div className="team-box-name">
-              <button onClick={this.handlerOpenModal.bind(this)}>
-                + add team
-              </button>
+      <div className="container">
+        <div className="team-list">
+          <h3>My Teams</h3>
+          <div className="team-boxes">
+            {this.getListTeam()}
+            <div className="team-box">
+              <div className="team-box-name">
+                <button onClick={this.handlerOpenModal.bind(this)}>
+                  + add team
+                </button>
+              </div>
             </div>
           </div>
+          <ReactModal isOpen={this.state.showModal} contentLabel="CreateTeam">
+            <div className="content-modal">
+              <div className="content-modal-box">
+                <button onClick={this.handleCloseModal.bind(this)}>
+                  Close Modal
+                </button>
+                <br />
+                <br />
+                <br />
+                <CreateTeam />
+                <br />
+                <br />
+                <br />
+              </div>
+            </div>
+          </ReactModal>
         </div>
-        <ReactModal isOpen={this.state.showModal} contentLabel="CreateTeam">
-          <div className="content-modal">
-            <div className="content-modal-box">
-              <button onClick={this.handleCloseModal.bind(this)}>
-                Close Modal
-              </button>
-              <br />
-              <br />
-              <br />
-              <CreateTeam />
-              <br />
-              <br />
-              <br />
-            </div>
-          </div>
-        </ReactModal>
       </div>
     );
   }

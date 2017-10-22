@@ -27,6 +27,7 @@ import TeamList from './components/team/team_list';
 import TeamAdmin from './components/team/team_admin';
 import { fetchTeams, fetchCurrentTeam } from './actions/team_actions';
 import DataSource from './hoc/dataSource';
+import RequireAuth from './hoc/requireAuth';
 
 const routes = (
   <Provider store={createAppStore(appReducers)}>
@@ -42,7 +43,7 @@ const routes = (
           />
           <Route
             path="/admin/team"
-            component={DataSource(TeamList, fetchTeams)}
+            component={DataSource(RequireAuth(TeamList), fetchTeams)}
           />
         </Switch>
       </div>

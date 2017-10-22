@@ -7,9 +7,15 @@ Meteor.startup(() => {
   console.log('Minichat Publication');
   //Minichat Publication
   Meteor.publish('minichatcollection', function() {
+    if (!this.userId) {
+      throw new Meteor.Error('unauthorized', 'You must be logged!');
+    }
     return MiniChatCollection.find({});
   });
   Meteor.publish('myprofile', function() {
+    if (!this.userId) {
+      throw new Meteor.Error('unauthorized', 'You must be logged!');
+    }
     return Meteor.users.find({ _id: this.userId });
   });
   Meteor.publish('usernames', function(ids) {
@@ -17,9 +23,15 @@ Meteor.startup(() => {
   });
   //publish My teams
   Meteor.publish('myteams', function() {
+    if (!this.userId) {
+      throw new Meteor.Error('unauthorized', 'You must be logged!');
+    }
     return TeamCollection.find({ users: { $in: [this.userId] } });
   });
   Meteor.publish('currentteam', function(teamId) {
+    if (!this.userId) {
+      throw new Meteor.Error('unauthorized', 'You must be logged!');
+    }
     return TeamCollection.find({
       _id: { $eq: teamId },
       users: { $in: [this.userId] }

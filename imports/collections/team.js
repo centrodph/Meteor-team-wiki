@@ -2,6 +2,9 @@ import { Mongo } from 'meteor/mongo';
 
 Meteor.methods({
   'teamcollection.create': function(name, description) {
+    if (!this.userId) {
+      throw new Meteor.Error('unauthorized', 'You must be logged!');
+    }
     return TeamCollection.insert({
       name,
       description,
@@ -15,7 +18,9 @@ Meteor.methods({
     });
   },
   'teamcollection.update': function(teamId, name, description) {
-    console.log(teamId, name, description);
+    if (!this.userId) {
+      throw new Meteor.Error('unauthorized', 'You must be logged!');
+    }
     return TeamCollection.update(
       {
         _id: { $eq: teamId },
